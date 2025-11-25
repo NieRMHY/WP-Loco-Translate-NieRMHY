@@ -53,6 +53,21 @@ abstract class Loco_api_Providers {
                 'model' => $settings->offsetGet('openai_api_model'),
                 'prompt' => $settings->offsetGet('openai_api_prompt'),
                 'url' => 'https://openai.com/policies/usage-policies/',
+            ],[
+                'id' => 'deepseek',
+                'name' => 'DeepSeek',
+                'key' => $settings->offsetGet('deepseek_api_key'),
+                'model' => $settings->offsetGet('deepseek_api_model'),
+                'prompt' => $settings->offsetGet('deepseek_api_prompt'),
+                'url' => 'https://platform.deepseek.com/',
+            ],[
+                'id' => 'openai_compat',
+                'name' => 'OpenAI Compatible',
+                'key' => $settings->offsetGet('openai_compat_api_key'),
+                'model' => $settings->offsetGet('openai_compat_api_model'),
+                'prompt' => $settings->offsetGet('openai_compat_api_prompt'),
+                'endpoint' => $settings->offsetGet('openai_compat_api_endpoint'),
+                'url' => 'https://platform.openai.com/docs/api-reference/introduction',
             ]
         ];
     }

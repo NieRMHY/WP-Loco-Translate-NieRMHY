@@ -84,6 +84,12 @@ class Loco_ajax_ApisController extends Loco_mvc_AjaxController {
         else if( 'openai' === $hook && class_exists('Loco_api_ChatGpt') ){
             $targets = Loco_api_ChatGpt::process( $sources, $locale, $config );
         }
+        else if( 'deepseek' === $hook && class_exists('Loco_api_DeepSeek') ){
+            $targets = Loco_api_DeepSeek::process( $sources, $locale, $config );
+        }
+        else if( 'openai_compat' === $hook && class_exists('Loco_api_OpenAiGeneric') ){
+            $targets = Loco_api_OpenAiGeneric::process( $sources, $locale, $config );
+        }
         else {
             throw new Loco_error_Exception('API not hooked. Use `add_filter('.var_export($action,1).',...)`');
         }
