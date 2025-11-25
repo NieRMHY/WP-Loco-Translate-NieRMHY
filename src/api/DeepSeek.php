@@ -40,11 +40,10 @@ abstract class Loco_api_DeepSeek extends Loco_api_OpenAiCompatible{
 
 
     protected static function tunePayload( array $payload, array $config, array $items, Loco_Locale $locale ):array {
-        $maxTokens = isset($config['max_tokens']) ? (int) $config['max_tokens'] : 8192;
-        if( $maxTokens > 0 ){
-            $payload['max_tokens'] = $maxTokens;
+        if( ! isset($config['max_tokens']) || (int) $config['max_tokens'] <= 0 ){
+            $config['max_tokens'] = 8192;
         }
-        return $payload;
+        return parent::tunePayload( $payload, $config, $items, $locale );
     }
 
 }

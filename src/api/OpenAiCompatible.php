@@ -35,8 +35,6 @@ abstract class Loco_api_OpenAiCompatible extends Loco_api_Client{
 
         $prompt = static::buildPrompt($locale, $config);
 
-        add_filter('http_request_timeout', function(){ return 20; });
-
         $messages = static::buildMessages($sourceLang, $targetLang, $prompt, $items, $config);
 
         $responseFormat = static::getResponseFormat($items);
@@ -49,7 +47,9 @@ abstract class Loco_api_OpenAiCompatible extends Loco_api_Client{
         ];
         $payload = static::tunePayload($payload, $config, $items, $locale);
 
-        $request = wp_remote_request( $endpoint, static::initRequestArguments( $apiKey, $config, $payload ) );
+        $timeout = static::resolveTimeout( $config, $items, $locale );
+
+        $request = wp_remote_request( $endpoint, static::initRequestArguments( $apiKey, $config, $payload, $timeout ) );
 
         $data = static::decode_response($request);
         foreach( $data['choices'] as $choice ){
@@ -226,11 +226,41 @@ abstract class Loco_api_OpenAiCompatible extends Loco_api_Client{
      * @return array
      */
     protected static function tunePayload( array $payload, array $config, array $items, Loco_Locale $locale ):array {
+        $maxTokens = static::resolveMaxTokens( $config, $items, $locale );
+        if( $maxTokens > 0 ){
+            $payload['max_tokens'] = $maxTokens;
+        }
         return $payload;
     }
 
 
-    protected static function initRequestArguments( string $apiKey, array $config, array $data ):array {
+    protected static function resolveTimeout( array $config, array $items, Loco_Locale $locale ):int {
+        $timeout = isset($config['timeout']) ? (int) $config['timeout'] : 20;
+        if( $timeout < 10 ){
+            $timeout = 10;
+        }
+        $timeout = (int) apply_filters( 'loco_openai_timeout', $timeout, $items, $locale, $config, static::getProviderName() );
+        if( $timeout < 10 ){
+            $timeout = 10;
+        }
+        return $timeout;
+    }
+
+
+    protected static function resolveMaxTokens( array $config, array $items, Loco_Locale $locale ):int {
+        $maxTokens = isset($config['max_tokens']) ? (int) $config['max_tokens'] : 0;
+        if( $maxTokens < 0 ){
+            $maxTokens = 0;
+        }
+        $maxTokens = (int) apply_filters( 'loco_openai_max_tokens', $maxTokens, $items, $locale, $config, static::getProviderName() );
+        if( $maxTokens < 0 ){
+            $maxTokens = 0;
+        }
+        return $maxTokens;
+    }
+
+
+    protected static function initRequestArguments( string $apiKey, array $config, array $data, int $timeout ):array {
         $headers = [
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer '.$apiKey,
@@ -249,6 +279,7 @@ abstract class Loco_api_OpenAiCompatible extends Loco_api_Client{
             'user-agent' => parent::getUserAgent(),
             'reject_unsafe_urls' => false,
             'headers' => $headers,
+            'timeout' => $timeout,
             'body' => json_encode($data),
         ];
     }
