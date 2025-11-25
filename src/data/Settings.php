@@ -29,13 +29,19 @@
  * @property string $openai_api_key API key for OpenAI / ChatGPT translator
  * @property string $openai_api_model Model for OpenAI / ChatGPT translator
  * @property string $openai_api_prompt Custom prompt for OpenAI / ChatGPT translator
+ * @property int $openai_api_timeout Timeout seconds for OpenAI translator
+ * @property int $openai_api_max_tokens Max tokens for OpenAI translator
  * @property string $deepseek_api_key API key for DeepSeek translator
  * @property string $deepseek_api_model Model for DeepSeek translator
  * @property string $deepseek_api_prompt Custom prompt for DeepSeek translator
+ * @property int $deepseek_api_timeout Timeout seconds for DeepSeek translator
+ * @property int $deepseek_api_max_tokens Max tokens for DeepSeek translator
  * @property string $openai_compat_api_key API key for generic OpenAI compatible translator
  * @property string $openai_compat_api_model Model for generic OpenAI compatible translator
  * @property string $openai_compat_api_prompt Custom prompt for generic OpenAI compatible translator
  * @property string $openai_compat_api_endpoint Endpoint URL for generic OpenAI compatible translator
+ * @property int $openai_compat_api_timeout Timeout seconds for generic OpenAI compatible translator
+ * @property int $openai_compat_api_max_tokens Max tokens for generic OpenAI compatible translator
  * 
  * TODO @property bool $php_pretty Whether to pretty print .l10n.php files
  */
@@ -79,13 +85,19 @@ class Loco_data_Settings extends Loco_data_Serializable {
         'openai_api_key' => '',
         'openai_api_model' => '',
         'openai_api_prompt' => '',
+        'openai_api_timeout' => 20,
+        'openai_api_max_tokens' => 0,
         'deepseek_api_key' => '',
         'deepseek_api_model' => '',
         'deepseek_api_prompt' => '',
+        'deepseek_api_timeout' => 20,
+        'deepseek_api_max_tokens' => 0,
         'openai_compat_api_key' => '',
         'openai_compat_api_model' => '',
         'openai_compat_api_prompt' => '',
         'openai_compat_api_endpoint' => '',
+        'openai_compat_api_timeout' => 20,
+        'openai_compat_api_max_tokens' => 0,
     ];
 
 

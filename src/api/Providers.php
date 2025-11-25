@@ -52,6 +52,8 @@ abstract class Loco_api_Providers {
                 'key' => $settings->offsetGet('openai_api_key'),
                 'model' => $settings->offsetGet('openai_api_model'),
                 'prompt' => $settings->offsetGet('openai_api_prompt'),
+                'timeout' => $settings->offsetGet('openai_api_timeout'),
+                'max_tokens' => $settings->offsetGet('openai_api_max_tokens'),
                 'url' => 'https://openai.com/policies/usage-policies/',
             ],[
                 'id' => 'deepseek',
@@ -59,6 +61,8 @@ abstract class Loco_api_Providers {
                 'key' => $settings->offsetGet('deepseek_api_key'),
                 'model' => $settings->offsetGet('deepseek_api_model'),
                 'prompt' => $settings->offsetGet('deepseek_api_prompt'),
+                'timeout' => $settings->offsetGet('deepseek_api_timeout'),
+                'max_tokens' => $settings->offsetGet('deepseek_api_max_tokens'),
                 'url' => 'https://platform.deepseek.com/',
             ],[
                 'id' => 'openai_compat',
@@ -67,6 +71,8 @@ abstract class Loco_api_Providers {
                 'model' => $settings->offsetGet('openai_compat_api_model'),
                 'prompt' => $settings->offsetGet('openai_compat_api_prompt'),
                 'endpoint' => $settings->offsetGet('openai_compat_api_endpoint'),
+                'timeout' => $settings->offsetGet('openai_compat_api_timeout'),
+                'max_tokens' => $settings->offsetGet('openai_compat_api_max_tokens'),
                 'url' => 'https://platform.openai.com/docs/api-reference/introduction',
             ]
         ];

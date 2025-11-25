@@ -132,6 +132,20 @@ $help = apply_filters('loco_external','https://localise.biz/wordpress/plugin/man
                             <textarea class="regular-text" name="api[openai][prompt]" id="loco--openai_prompt"><?php $api->e('prompt')?></textarea>
                         </p>
                         <p>
+                            <label for="loco--openai_api_timeout">
+                                <?php esc_html_e('Timeout (seconds)','loco-translate')?>:
+                            </label>
+                            <input type="number" min="10" step="1" name="api[openai][timeout]" id="loco--openai_api_timeout" value="<?php $api->e('timeout')?>" placeholder="20" />
+                            <span class="description"><?php esc_html_e('Default 20s, use 40s if bulk requests often time out','loco-translate')?></span>
+                        </p>
+                        <p>
+                            <label for="loco--openai_api_max_tokens">
+                                <?php esc_html_e('Max tokens','loco-translate')?>:
+                            </label>
+                            <input type="number" min="0" step="1" name="api[openai][max_tokens]" id="loco--openai_api_max_tokens" value="<?php $api->e('max_tokens')?>" placeholder="0" />
+                            <span class="description"><?php esc_html_e('Leave blank for API default; set higher for long paragraphs','loco-translate')?></span>
+                        </p>
+                        <p>
                             <span class="description"><a href="https://platform.openai.com/" target="_blank" tabindex="-1">https://platform.openai.com/</a></span>
                         </p>
                     </fieldset>
@@ -163,6 +177,20 @@ $help = apply_filters('loco_external','https://localise.biz/wordpress/plugin/man
                                 Prompt:
                             </label>
                             <textarea class="regular-text" name="api[deepseek][prompt]" id="loco--deepseek_prompt"><?php $api->e('prompt')?></textarea>
+                        </p>
+                        <p>
+                            <label for="loco--deepseek_api_timeout">
+                                <?php esc_html_e('Timeout (seconds)','loco-translate')?>:
+                            </label>
+                            <input type="number" min="10" step="1" name="api[deepseek][timeout]" id="loco--deepseek_api_timeout" value="<?php $api->e('timeout')?>" placeholder="20" />
+                            <span class="description"><?php esc_html_e('Default 20s, try 40s if JSON output is slow','loco-translate')?></span>
+                        </p>
+                        <p>
+                            <label for="loco--deepseek_api_max_tokens">
+                                <?php esc_html_e('Max tokens','loco-translate')?>:
+                            </label>
+                            <input type="number" min="0" step="1" name="api[deepseek][max_tokens]" id="loco--deepseek_api_max_tokens" value="<?php $api->e('max_tokens')?>" placeholder="8192" />
+                            <span class="description"><?php esc_html_e('Recommended 8192 for DeepSeek JSON output; leave blank for default','loco-translate')?></span>
                         </p>
                         <p>
                             <span class="description"><a href="https://platform.deepseek.com/" target="_blank" tabindex="-1">https://platform.deepseek.com/</a></span>
@@ -202,6 +230,20 @@ $help = apply_filters('loco_external','https://localise.biz/wordpress/plugin/man
                                 Prompt:
                             </label>
                             <textarea class="regular-text" name="api[openai_compat][prompt]" id="loco--openai_compat_prompt"><?php $api->e('prompt')?></textarea>
+                        </p>
+                        <p>
+                            <label for="loco--openai_compat_api_timeout">
+                                <?php esc_html_e('Timeout (seconds)','loco-translate')?>:
+                            </label>
+                            <input type="number" min="10" step="1" name="api[openai_compat][timeout]" id="loco--openai_compat_api_timeout" value="<?php $api->e('timeout')?>" placeholder="20" />
+                            <span class="description"><?php esc_html_e('Default 20s; raise to 40s+ for slower compatible APIs','loco-translate')?></span>
+                        </p>
+                        <p>
+                            <label for="loco--openai_compat_api_max_tokens">
+                                <?php esc_html_e('Max tokens','loco-translate')?>:
+                            </label>
+                            <input type="number" min="0" step="1" name="api[openai_compat][max_tokens]" id="loco--openai_compat_api_max_tokens" value="<?php $api->e('max_tokens')?>" placeholder="0" />
+                            <span class="description"><?php esc_html_e('Leave blank to follow provider defaults','loco-translate')?></span>
                         </p>
                         <p>
                             <span class="description"><a href="https://platform.openai.com/docs/api-reference/introduction" target="_blank" tabindex="-1">https://platform.openai.com/docs/api-reference/introduction</a></span>
