@@ -137,6 +137,78 @@ $help = apply_filters('loco_external','https://localise.biz/wordpress/plugin/man
                     </fieldset>
                 </td>
             </tr><?php
+            // DEEPSEEK
+            $api = $apis['deepseek']?> 
+            <tr>
+                <th scope="row"><?php $api->e('name')?></th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span><?php $ui->e('api_key')?></span>
+                        </legend>
+                        <p>
+                            <label for="loco--deepseek_api_key">
+                                <?php $ui->e('api_key')?>:
+                            </label>
+                            <input type="text" size="50" name="api[deepseek][key]" id="loco--deepseek_api_key" value="<?php $api->e('key')?>" spellcheck="false" />
+                        </p>
+                        <p>
+                            <label for="loco--deepseek_api_model">
+                                Model:
+                            </label>
+                            <input type="text" size="50" name="api[deepseek][model]" id="loco--deepseek_api_model" value="<?php $api->e('model')?>" placeholder="deepseek-chat" spellcheck="false" />
+                        </p>
+                        <p>
+                            <label for="loco--deepseek_prompt" style="vertical-align: top">
+                                Prompt:
+                            </label>
+                            <textarea class="regular-text" name="api[deepseek][prompt]" id="loco--deepseek_prompt"><?php $api->e('prompt')?></textarea>
+                        </p>
+                        <p>
+                            <span class="description"><a href="https://platform.deepseek.com/" target="_blank" tabindex="-1">https://platform.deepseek.com/</a></span>
+                        </p>
+                    </fieldset>
+                </td>
+            </tr><?php
+            // OPENAI COMPATIBLE
+            $api = $apis['openai_compat']?> 
+            <tr>
+                <th scope="row"><?php $api->e('name')?></th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span><?php $ui->e('api_key')?></span>
+                        </legend>
+                        <p>
+                            <label for="loco--openai_compat_api_key">
+                                <?php $ui->e('api_key')?>:
+                            </label>
+                            <input type="text" size="50" name="api[openai_compat][key]" id="loco--openai_compat_api_key" value="<?php $api->e('key')?>" spellcheck="false" />
+                        </p>
+                        <p>
+                            <label for="loco--openai_compat_api_model">
+                                Model:
+                            </label>
+                            <input type="text" size="50" name="api[openai_compat][model]" id="loco--openai_compat_api_model" value="<?php $api->e('model')?>" placeholder="gpt-4o-mini" spellcheck="false" />
+                        </p>
+                        <p>
+                            <label for="loco--openai_compat_api_endpoint">
+                                <?php $ui->e('api_url')?>:
+                            </label>
+                            <input type="text" size="70" name="api[openai_compat][endpoint]" id="loco--openai_compat_api_endpoint" value="<?php $api->e('endpoint')?>" spellcheck="false" placeholder="https://example.com/v1/chat/completions" />
+                        </p>
+                        <p>
+                            <label for="loco--openai_compat_prompt" style="vertical-align: top">
+                                Prompt:
+                            </label>
+                            <textarea class="regular-text" name="api[openai_compat][prompt]" id="loco--openai_compat_prompt"><?php $api->e('prompt')?></textarea>
+                        </p>
+                        <p>
+                            <span class="description"><a href="https://platform.openai.com/docs/api-reference/introduction" target="_blank" tabindex="-1">https://platform.openai.com/docs/api-reference/introduction</a></span>
+                        </p>
+                    </fieldset>
+                </td>
+            </tr><?php
             /* @var Loco_mvc_ViewParams[] $hooked */
             foreach( $hooked as $api ):?> 
             <tr>

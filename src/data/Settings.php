@@ -29,6 +29,13 @@
  * @property string $openai_api_key API key for OpenAI / ChatGPT translator
  * @property string $openai_api_model Model for OpenAI / ChatGPT translator
  * @property string $openai_api_prompt Custom prompt for OpenAI / ChatGPT translator
+ * @property string $deepseek_api_key API key for DeepSeek translator
+ * @property string $deepseek_api_model Model for DeepSeek translator
+ * @property string $deepseek_api_prompt Custom prompt for DeepSeek translator
+ * @property string $openai_compat_api_key API key for generic OpenAI compatible translator
+ * @property string $openai_compat_api_model Model for generic OpenAI compatible translator
+ * @property string $openai_compat_api_prompt Custom prompt for generic OpenAI compatible translator
+ * @property string $openai_compat_api_endpoint Endpoint URL for generic OpenAI compatible translator
  * 
  * TODO @property bool $php_pretty Whether to pretty print .l10n.php files
  */
@@ -72,6 +79,13 @@ class Loco_data_Settings extends Loco_data_Serializable {
         'openai_api_key' => '',
         'openai_api_model' => '',
         'openai_api_prompt' => '',
+        'deepseek_api_key' => '',
+        'deepseek_api_model' => '',
+        'deepseek_api_prompt' => '',
+        'openai_compat_api_key' => '',
+        'openai_compat_api_model' => '',
+        'openai_compat_api_prompt' => '',
+        'openai_compat_api_endpoint' => '',
     ];
 
 
